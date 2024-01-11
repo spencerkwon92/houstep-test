@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
-import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import Link from "next/link";
 
 import AppLayout from "../components/AppLayout";
 import { BigLogo } from "../icons";
 
-const pageCss = css`
+const PageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,30 +13,26 @@ const pageCss = css`
   background-color: black;
   width: 100%;
   height: 100%;
+`;
 
-  button {
-    font-size: 25px;
-    width: 172px;
-    height: 88px;
-    border-radius: 20px;
-    background-color: #ffffff;
-    margin-top: 20px;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
+const OrderButton = styled.button`
+  font-size: 25px;
+  width: 172px;
+  height: 88px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  margin-top: 20px;
 `;
 
 const Home: NextPage = () => {
   return (
     <AppLayout>
-      <div css={pageCss}>
+      <PageContainer>
         <BigLogo />
-        <Link href="/order">
-          <button>주문하러 가기</button>
+        <Link href="/order" passHref>
+          <OrderButton>주문하러 가기</OrderButton>
         </Link>
-      </div>
+      </PageContainer>
     </AppLayout>
   );
 };

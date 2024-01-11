@@ -12,18 +12,35 @@ const useLoadOrders = (): [Order[], boolean, Error | null] => {
   const [{ orders }, setOrderState] = useRecoilState(orderState);
 
   useEffect(() => {
+    let isMounted = true;
     setIsLoading(true);
+
     loadOrdersAPI()
-      .then((data) =>
-        setOrderState((prev) =>
-          produce(prev, (draft) => {
-            draft.orders = data;
-          })
-        )
-      )
-      .catch((error) => setError(error))
-      .finally(() => setIsLoading(false));
-  }, []);
+      .then((data) => {
+        if (isMounted) {
+          setOrderState((prev) =>
+            produce(prev, (draft) => {
+              const reverseData = [...data].reverse();
+              draft.orders = reverseData;
+            })
+          );
+        }
+      })
+      .catch((error) => {
+        if (isMounted) {
+          setError(error);
+        }
+      })
+      .finally(() => {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [setOrderState, loadOrdersAPI]);
 
   return [orders, isLoading, error];
 };

@@ -7,6 +7,9 @@ const globalCss = css`
   body {
     font-family: "Noto Sans KR", sans-serif;
   }
+  button {
+    cursor: pointer;
+  }
 `;
 
 function MyApp({ Component, pageProps }: AppProps) {

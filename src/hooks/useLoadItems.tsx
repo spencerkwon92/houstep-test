@@ -12,18 +12,34 @@ const useLoadItems = (): [ItemState, boolean, Error | null] => {
   const [items, setItems] = useRecoilState(itemState);
 
   useEffect(() => {
+    let isMounted = true;
     setIsLoading(true);
+
     loadItemsAPI()
-      .then((data) =>
-        setItems((prev) =>
-          produce(prev, (draft) => {
-            draft.items = data;
-          })
-        )
-      )
-      .catch((error) => setError(error))
-      .finally(() => setIsLoading(false));
-  }, []);
+      .then((data) => {
+        if (isMounted) {
+          setItems((prev) =>
+            produce(prev, (draft) => {
+              draft.items = data;
+            })
+          );
+        }
+      })
+      .catch((error) => {
+        if (isMounted) {
+          setError(error);
+        }
+      })
+      .finally(() => {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [setItems, loadItemsAPI]);
 
   return [items, isLoading, error];
 };
