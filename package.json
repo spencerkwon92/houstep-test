@@ -6,12 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "server": "json-server --watch ./src/db/db.json --port 3001"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "axios": "^1.6.5",
+    "immer": "^10.0.3",
+    "json-server": "^1.0.0-alpha.16",
     "next": "14.0.4",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "recoil": "^0.7.7",
+    "use-local-storage": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "20.10.8",
