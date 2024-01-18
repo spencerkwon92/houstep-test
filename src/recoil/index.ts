@@ -1,11 +1,11 @@
 import { atom } from "recoil";
 import { Item, Order } from "../interfaces/data";
 
-type ItemState = {
+export type ItemState = {
   items: Item[];
 };
 
-type OrderState = {
+export type OrderState = {
   orders: Order[];
   order: { item: Item; quantity: number }[];
 };

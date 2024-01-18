@@ -1,13 +1,15 @@
-import { Order } from "../../../interfaces/data";
+import { FunctionComponent } from "react";
+
+import { Order } from "../../interfaces/data";
 import OrderDetailCard from "./OrderDetailCard";
 import MenuButton from "./MenuButton";
-import { OrderCardContainer } from "./Components.styles";
+import styled from "@emotion/styled";
 
-type ComponentProp = {
+type Props = {
   orderData: Order;
 };
 
-const OrderCard = ({ orderData }: ComponentProp) => {
+const OrderCard: FunctionComponent<Props> = ({ orderData }) => {
   const { id, totalPrice, totalQuantity, items } = orderData;
 
   return (
@@ -28,3 +30,23 @@ const OrderCard = ({ orderData }: ComponentProp) => {
 };
 
 export default OrderCard;
+
+const OrderCardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 15px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  width: 300px;
+  padding: 12px;
+  font-size: 18px;
+
+  .totalInfoSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;

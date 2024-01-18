@@ -5,18 +5,7 @@ import styled from "@emotion/styled";
 import AppLayout from "../components/AppLayout";
 import { CheckIcon } from "../icons";
 
-const PageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  width: 100%;
-  height: 100%;
-  font-size: 18px;
-`;
-
-function OrderCompletePage() {
+export default function OrderCompletePage() {
   const router = useRouter();
 
   useEffect(() => {
@@ -33,4 +22,13 @@ function OrderCompletePage() {
   );
 }
 
-export default OrderCompletePage;
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+`;

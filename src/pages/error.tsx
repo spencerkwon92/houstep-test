@@ -4,24 +4,13 @@ import styled from "@emotion/styled";
 
 import AppLayout from "../components/AppLayout";
 
-const PageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  font-size: 18px;
-  text-align: center;
-`;
-
-function OrderErrorPage() {
+export default function OrderErrorPage() {
   const router = useRouter();
 
   useEffect(() => {
     const timer = setTimeout(() => router.push("/order"), 3000);
     return () => clearTimeout(timer);
-  }, [router]);
+  }, []);
 
   return (
     <AppLayout>
@@ -36,4 +25,13 @@ function OrderErrorPage() {
   );
 }
 
-export default OrderErrorPage;
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  text-align: center;
+`;

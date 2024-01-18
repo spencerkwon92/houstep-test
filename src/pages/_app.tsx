@@ -2,6 +2,15 @@ import type { AppProps } from "next/app";
 import { css, Global } from "@emotion/react";
 import { RecoilRoot } from "recoil";
 
+export default function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <RecoilRoot>
+      <Global styles={globalCss} />
+      <Component {...pageProps} />
+    </RecoilRoot>
+  );
+}
+
 const globalCss = css`
   html,
   body {
@@ -11,14 +20,3 @@ const globalCss = css`
     cursor: pointer;
   }
 `;
-
-function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <RecoilRoot>
-      <Global styles={globalCss} />
-      <Component {...pageProps} />
-    </RecoilRoot>
-  );
-}
-
-export default MyApp;

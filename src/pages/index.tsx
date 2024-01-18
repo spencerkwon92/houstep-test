@@ -1,9 +1,21 @@
-import type { NextPage } from "next";
 import styled from "@emotion/styled";
 import Link from "next/link";
 
 import AppLayout from "../components/AppLayout";
 import { BigLogo } from "../icons";
+
+export default function Home() {
+  return (
+    <AppLayout>
+      <PageContainer>
+        <BigLogo />
+        <Link href="/order" passHref>
+          <OrderButton>주문하러 가기</OrderButton>
+        </Link>
+      </PageContainer>
+    </AppLayout>
+  );
+}
 
 const PageContainer = styled.div`
   display: flex;
@@ -23,18 +35,3 @@ const OrderButton = styled.button`
   background-color: #ffffff;
   margin-top: 20px;
 `;
-
-const Home: NextPage = () => {
-  return (
-    <AppLayout>
-      <PageContainer>
-        <BigLogo />
-        <Link href="/order" passHref>
-          <OrderButton>주문하러 가기</OrderButton>
-        </Link>
-      </PageContainer>
-    </AppLayout>
-  );
-};
-
-export default Home;

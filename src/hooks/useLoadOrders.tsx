@@ -40,7 +40,7 @@ const useLoadOrders = (): [Order[], boolean, Error | null] => {
     return () => {
       isMounted = false;
     };
-  }, [setOrderState, loadOrdersAPI]);
+  }, []);
 
   return [orders, isLoading, error];
 };
